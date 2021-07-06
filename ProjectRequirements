@@ -1,0 +1,30 @@
+Steps For How Program Will Operate
+
+Program starts and ask user:
+
+Welcome here are your options. Please select one.
+Type -1 at anytime to exit program
+
+Select a number:
+
+(1)	Sort by County in Alphabetical Order
+(2)	Sort by County in Reverse Alphabetical Order
+(3)	Sort by 2015 Population Smallest to Largest
+(4)	Sort by 2015 Population Largest to Smallest
+(5)	Sort by 2016 Population Smallest to Largest
+(6)	Sort by 2016 Population Largest to Smallest
+(7)	Sort by 2017 Population Smallest to Largest
+(8)	Sort by 2017 Population Largest to Smallest
+(9)	Sort by 2018 Population Smallest to Largest
+(10)	Sort by 2018 Population Largest to Smallest
+(11)	Sort by 2019 Population Smallest to Largest
+(12)	Sort by 2019 Population Largest to Smallest
+(13)	Find information About County Via County Name
+
+*If User selects options [1-12] Program uses Quick Sort algorithm to sort 
+
+Program sorts and displays information in a neat table format
+Program returns the user back to the main menu
+
+*If User selects option 13. Program sorts counties in Alphabetical order by 
+county using Merge Sort and searches for the county specified by the user
