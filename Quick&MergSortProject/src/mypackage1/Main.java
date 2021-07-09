@@ -69,7 +69,7 @@ public class Main {
 		}
 		
 		Scanner fileNameEntered = new Scanner(System.in);
-		System.out.print("Please enter the file name with extension (example myfile.csv or file1.txt): ");
+		System.out.print("Please enter the file name with extension (Type Counties.csv): ");
 		String userFileName = fileNameEntered.next();
 		System.out.println();
 		
@@ -91,15 +91,14 @@ public class Main {
 	public static void showChoices() {
 		System.out.println("Please choose an option");
 		System.out.println("(0)	Quit");
-		System.out.println("(1)	Sort by County in Reverse Alphabetical Order");
+		System.out.println("(1)	Sort by County in Alphabetical Order");
 		System.out.println("(2)	Sort by 2015 Population");
 		System.out.println("(3)	Sort by 2016 Population");
 		System.out.println("(4)	Sort by 2018 Population");
 		System.out.println("(5)	Sort by 2019 Population");
 		System.out.println("(6)	Find information About County Via County Name");
-		System.out.println("(10)	Display contents of file");
-		System.out.println("(100)	Total Florida population in 2019");
-	}
+		System.out.println("(10)	Display counties & 2018 total Florida population");
+		}
 	
 	public static boolean chooseUserChoices(County[] countyArray) 
 	{
@@ -132,7 +131,7 @@ public class Main {
 			System.out.println("Counties Sorted by 2019 Population");
 			break;
 		case "10":
-			System.out.println("List of Counties displayed");
+			System.out.println("List of counties and total Florida population for 2018 displayed");
 			displayCountryInfo(countyArray);
 			break;
 		default:
@@ -151,21 +150,17 @@ public class Main {
 		
 		System.out.println();
 		
-		for(int i = 0; i < 66; i++) {
+		int sumPopulation2018 = 0;
+		for(int i = 0; i < 67; i++) {
 			System.out.printf("%-35s%-35s%-35s%-35s%-35s%-35s",countyArray[i].getCountyName(), countyArray[i].getPopulation2015(), 
 					countyArray[i].getPopulation2016(), countyArray[i].getPopulation2017(),
 					countyArray[i].getPopulation2018(), countyArray[i].getPopulation2019());
-					System.out.println();
+			
+			sumPopulation2018 = sumPopulation2018 + Integer.parseInt(countyArray[i].getPopulation2018());
+			System.out.println();
 		}
-		
-		int sumPopulation2019 = 0;
-		for(int i = 0; i < 66; i++) {
-			sumPopulation2019 = sumPopulation2019 + Integer.parseInt(countyArray[i].getPopulation2018());
-		}
-		System.out.println();
-		System.out.println(" As of 2018 the Florida population is: " + sumPopulation2019);
+		System.out.println("As of 2018 the Florida population is: " + sumPopulation2018);
 		System.out.println();
 	}
-	
 }
 
