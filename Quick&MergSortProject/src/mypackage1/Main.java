@@ -15,7 +15,9 @@ import java.util.Scanner;
 	(13)Find information About County Via County Name
 	(100)Display contents of file
 */
+
 public class Main {
+	
 	/*
 	 * This method reads the a csv file 
 	 * Creates an array that holds the value of each category
@@ -73,6 +75,7 @@ public class Main {
 		String userFileName = fileNameEntered.next();
 		System.out.println();
 		
+		
 		if(userFileName.equals(countyFile) || userFileName.equals(countyFile.toLowerCase())  ) 
 		{
 			boolean endProgram = false;
@@ -86,14 +89,18 @@ public class Main {
 		else {
 			System.out.println("File name does not match any files please check spelling and remember to add extention");
 		}
+		fileNameEntered.close();
 	}
+	
+	
+	//---------------------------------------------------------------------------------------------------------------------
 	
 	public static void showChoices() {
 		System.out.println("Please choose an option");
 		System.out.println("(0)	Quit");
 		System.out.println("(1)	Sort by County in Alphabetical Order");
 		System.out.println("(2)	Sort by 2015 Population");
-		System.out.println("(3)	Sort by 2016 Population");
+		System.out.println("(3)	*Largest to Smallest* Sort by 2016 Population");
 		System.out.println("(4)	Sort by 2018 Population");
 		System.out.println("(5)	Sort by 2019 Population");
 		System.out.println("(6)	Find information About County Via County Name");
@@ -114,22 +121,59 @@ public class Main {
 			return true;
 		case "1":
 			System.out.println("Counties Sorted in Alphabetical Order");
+			QuicksortByName qsName = new QuicksortByName(countyArray.length);
+			for(int i = 0; i < countyArray.length; i++) {
+				qsName.insert(countyArray[i]);
+			}
+			qsName.quickSort();
+			qsName.display();
+
 			break;
 		case "2":
 			System.out.println("Counties Sorted by 2015 Population");
+			Quicksort qs = new Quicksort(countyArray.length);
+			for(int i = 0; i < countyArray.length; i++) {
+				qs.insert(countyArray[i]);
+			}
+			qs.quickSort();
+			qs.display();
 			break;
 		case "3":
-			System.out.println("Counties Sorted by 2016 Population");
+			System.out.println("*Largest of Smallest* Counties Sorted by 2016 Population");
+			QuicksortPop2016 qs2016 = new QuicksortPop2016(countyArray.length);
+			for(int i = 0; i < countyArray.length; i++) {
+				qs2016.insert(countyArray[i]);
+			}
+			qs2016.quickSort();
+			qs2016.display();
 			break;
 		case "4":
 			System.out.println("Counties Sorted by 2017 Population");
+			QuicksortPop2017 qs2017 = new QuicksortPop2017(countyArray.length);
+			for(int i = 0; i < countyArray.length; i++) {
+				qs2017.insert(countyArray[i]);
+			}
+			qs2017.quickSort();
+			qs2017.display();
 			break;
 		case "5":
 			System.out.println("Counties Sorted by 2018 Population");
+			QuicksortPop2018 qs2018 = new QuicksortPop2018(countyArray.length);
+			for(int i = 0; i < countyArray.length; i++) {
+				qs2018.insert(countyArray[i]);
+			}
+			qs2018.quickSort();
+			qs2018.display();
 			break;
 		case "6":
-			System.out.println("Counties Sorted by 2019 Population");
+			System.out.println("(Does Not Work) Counties Sorted by 2019 Population");
 			break;
+//			QuicksortPop2019 qs2019 = new QuicksortPop2019(countyArray.length);
+//			for(int i = 0; i < countyArray.length; i++) {
+//				qs2019.insert(countyArray[i]);
+//			}
+//			qs2019.quickSort();
+//			qs2019.display();
 		case "10":
 			System.out.println("List of counties and total Florida population for 2018 displayed");
 			displayCountryInfo(countyArray);
@@ -139,6 +183,8 @@ public class Main {
 			}
 		return false;
 	}
+	
+	//---------------------------------------------------------------------------------------------------------------------
 
 	public static void displayCountryInfo(County[] countyArray) {
 		System.out.printf("%-35s%-35s%-35s%-35s%-35s%-35s", "Country Name","Population 2015", "Population 2016", "Population 2017", "Population 2018", "Population 2019");
@@ -152,7 +198,7 @@ public class Main {
 		
 		int sumPopulation2018 = 0;
 		for(int i = 0; i < 67; i++) {
-			System.out.printf("%-35s%-35s%-35s%-35s%-35s%-35s",countyArray[i].getCountyName(), countyArray[i].getPopulation2015(), 
+			System.out.printf(i + 1 + ". " +"%-35s%-35s%-35s%-35s%-35s%-35s",countyArray[i].getCountyName(), countyArray[i].getPopulation2015(), 
 					countyArray[i].getPopulation2016(), countyArray[i].getPopulation2017(),
 					countyArray[i].getPopulation2018(), countyArray[i].getPopulation2019());
 			
@@ -162,5 +208,9 @@ public class Main {
 		System.out.println("As of 2018 the Florida population is: " + sumPopulation2018);
 		System.out.println();
 	}
+	
+	//---------------------------------------------------------------------------------------------------------------------
+	
+
 }
 
