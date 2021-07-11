@@ -101,9 +101,10 @@ public class Main {
 		System.out.println("(1)	Sort by County in Alphabetical Order");
 		System.out.println("(2)	Sort by 2015 Population");
 		System.out.println("(3)	*Largest to Smallest* Sort by 2016 Population");
-		System.out.println("(4)	Sort by 2018 Population");
-		System.out.println("(5)	Sort by 2019 Population");
-		System.out.println("(6)	Find information About County Via County Name");
+		System.out.println("(4)	Sort by 2017 Population");
+		System.out.println("(5)	Sort by 2018 Population");
+		System.out.println("(6)	Sort by 2019 Population");
+		System.out.println("(7)	Sort Reverse Order & Find information About County Via County Name");
 		System.out.println("(10)	Display counties & 2018 total Florida population");
 		}
 	
@@ -174,6 +175,20 @@ public class Main {
 //			}
 //			qs2019.quickSort();
 //			qs2019.display();
+		case "7":
+			System.out.println("Counties Sorted in Reverse Alphabetical Order and County info Displayed");
+			MSortandBSearchCounty msBs = new MSortandBSearchCounty(countyArray.length);
+			for(int i = 0; i < countyArray.length; i++) {
+				msBs.insert(countyArray[i]);
+			}
+			msBs.mergeSort();
+			msBs.display();
+			String searchKey = "jhjbjhbjlh";
+			if( msBs.find(searchKey) != countyArray.length )
+			System.out.println("Found " + searchKey);
+			else
+			System.out.println("Can’t find" + searchKey);
+			break;
 		case "10":
 			System.out.println("List of counties and total Florida population for 2018 displayed");
 			displayCountryInfo(countyArray);
@@ -210,7 +225,7 @@ public class Main {
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------
-	
 
+	
 }
 
