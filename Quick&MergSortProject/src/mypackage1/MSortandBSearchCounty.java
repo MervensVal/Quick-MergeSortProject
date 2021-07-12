@@ -97,13 +97,23 @@ public class MSortandBSearchCounty {
 		private int recFind(String searchKey, int lowerBound, int upperBound) {
 			int curIn;
 			curIn = (lowerBound + upperBound) / 2;
-			if (theArray[curIn].getCountyName().equals(searchKey) )
+			if (theArray[curIn].getCountyName().equals(searchKey) ) {
+				System.out.println("*****************");
+				System.out.println("Country Name: " + theArray[curIn].getCountyName());
+				System.out.println("Population 2015: " + theArray[curIn].getPopulation2015());
+				System.out.println("Population 2016: " + theArray[curIn].getPopulation2016());
+				System.out.println("Population 2017: "+ theArray[curIn].getPopulation2017());
+				System.out.println("Population 2018: "+ theArray[curIn].getPopulation2018());
+				System.out.println("Population 2019: " + theArray[curIn].getPopulation2019());
+				System.out.println("*****************");
+
 				return curIn; // found it
+			}
 			else if (lowerBound > upperBound)
 				return nElems; // can’t find it
 			else // divide range
 			{
-				if (theArray[curIn].getCountyName().compareTo(searchKey) < 0 ) // it’s in upper half
+				if (theArray[curIn].getCountyName().compareTo(searchKey) > 0 ) // it’s in upper half
 					return recFind(searchKey, curIn + 1, upperBound);
 				else // it’s in lower half
 					return recFind(searchKey, lowerBound, curIn - 1);
@@ -112,13 +122,6 @@ public class MSortandBSearchCounty {
 		
 		public void displaySingleCounty() 
 		{
-			
-			System.out.println("Country Name: ");
-			System.out.println("Population 2015: ");
-			System.out.println("Population 2016: ");
-			System.out.println("Population 2017: ");
-			System.out.println("Population 2018: ");
-			System.out.println("Population 2019: ");
 		}
 		
 		//A Binary Search with a loop Example

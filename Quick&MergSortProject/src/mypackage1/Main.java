@@ -96,6 +96,7 @@ public class Main {
 	//---------------------------------------------------------------------------------------------------------------------
 	
 	public static void showChoices() {
+		System.out.println("*******************************************");
 		System.out.println("Please choose an option");
 		System.out.println("(0)	Quit");
 		System.out.println("(1)	Sort by County in Alphabetical Order");
@@ -106,6 +107,8 @@ public class Main {
 		System.out.println("(6)	Sort by 2019 Population");
 		System.out.println("(7)	Sort Reverse Order & Find information About County Via County Name");
 		System.out.println("(10)	Display counties & 2018 total Florida population");
+		System.out.println("********************************************");
+
 		}
 	
 	public static boolean chooseUserChoices(County[] countyArray) 
@@ -140,7 +143,7 @@ public class Main {
 			qs.display();
 			break;
 		case "3":
-			System.out.println("*Largest of Smallest* Counties Sorted by 2016 Population");
+			System.out.println("*Largest to Smallest* Counties Sorted by 2016 Population");
 			QuicksortPop2016 qs2016 = new QuicksortPop2016(countyArray.length);
 			for(int i = 0; i < countyArray.length; i++) {
 				qs2016.insert(countyArray[i]);
@@ -176,18 +179,20 @@ public class Main {
 //			qs2019.quickSort();
 //			qs2019.display();
 		case "7":
-			System.out.println("Counties Sorted in Reverse Alphabetical Order and County info Displayed");
 			MSortandBSearchCounty msBs = new MSortandBSearchCounty(countyArray.length);
 			for(int i = 0; i < countyArray.length; i++) {
 				msBs.insert(countyArray[i]);
 			}
+			Scanner countyNameInput = new Scanner(System.in);
+			System.out.println("Please enter the name of the county to search for: ");
+			String searchKey = countyNameInput.nextLine();
+			System.out.println("Counties Sorted in Reverse Alphabetical Order and County info Displayed");
 			msBs.mergeSort();
 			msBs.display();
-			String searchKey = "jhjbjhbjlh";
 			if( msBs.find(searchKey) != countyArray.length )
 			System.out.println("Found " + searchKey);
 			else
-			System.out.println("Can’t find" + searchKey);
+			System.out.println("Can’t find " + searchKey);
 			break;
 		case "10":
 			System.out.println("List of counties and total Florida population for 2018 displayed");
